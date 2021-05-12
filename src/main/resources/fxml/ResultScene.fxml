@@ -7,16 +7,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="boardgame.controller.ResultSceneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.controller.ResultSceneController">
    <children>
-      <TableView fx:id="toptenTable" editable="true" layoutX="25.0" layoutY="74.0" prefHeight="495.0" prefWidth="650.0">
+      <TableView fx:id="resultTable" editable="true" layoutX="25.0" layoutY="74.0" prefHeight="495.0" prefWidth="650.0">
         <columns>
-          <TableColumn fx:id="player" prefWidth="200.0" text="Player" />
-          <TableColumn fx:id="winCount" prefWidth="170.0" text="Number of Wins" />
-            <TableColumn fx:id="created" prefWidth="279.0" text="Date" />
+          <TableColumn fx:id="player" prefWidth="143.0" text="Player" />
+          <TableColumn fx:id="numSteps" minWidth="0.0" prefWidth="122.0" text="Number of Steps" />
+            <TableColumn fx:id="gameStarted" prefWidth="139.0" text="Game Started" />
+            <TableColumn fx:id="gameFinished" prefWidth="150.0" text="Game Finished" />
+            <TableColumn fx:id="goalAchieved" prefWidth="95.0" text="Goal Achieved" />
         </columns>
       </TableView>
-      <Label layoutX="272.0" layoutY="32.0" text="Top FIve Players">
+      <Label layoutX="272.0" layoutY="32.0" text="Top Ten Players">
          <font>
             <Font size="22.0" />
          </font>

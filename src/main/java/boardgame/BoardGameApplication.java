@@ -10,6 +10,11 @@ import javafx.stage.Stage;
 
 public class BoardGameApplication extends Application {
 
+    /**
+     *
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainScene.fxml"));

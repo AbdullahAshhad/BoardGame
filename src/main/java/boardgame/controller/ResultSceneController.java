@@ -1,8 +1,11 @@
 package boardgame.controller;
 
+import boardgame.model.Data;
 import boardgame.model.GameState;
 
 import boardgame.model.Player;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +19,12 @@ import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -31,16 +36,22 @@ import java.util.List;
 public class ResultSceneController {
 
     @FXML
-    private TableView<Player> toptenTable;
+    private TableView<Player> resultTable;
 
     @FXML
     private TableColumn<Player, String> player;
 
     @FXML
-    private TableColumn<Player, Integer> winCount;
+    private TableColumn<Player, Integer> numSteps;
 
     @FXML
-    private TableColumn<Player, ZonedDateTime> created;
+    private TableColumn<Player, LocalDateTime> gameStarted;
+
+    @FXML
+    private TableColumn<Player, LocalDateTime> gameFinished;
+
+    @FXML
+    private TableColumn<Player, Boolean> goalAchieved;
 
 
 
@@ -57,7 +68,7 @@ public class ResultSceneController {
         FXMLLoader loader = new FXMLLoader(GameState.class.getResource("/fxml/MainScene.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
-        stage.setTitle("Main Chess");
+        stage.setTitle("Main Game Board");
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.toFront();
@@ -75,7 +86,42 @@ public class ResultSceneController {
      */
     @FXML
     public void initialize() {
+        List<Player> players = Data.getPlayerList();
+        Collections.sort(players);
+        List<Player> topTenList =  players.stream().skip(0).limit(10).collect(Collectors.toList());
+        players.stream().map(Player::getNumSteps).forEach(System.out::println);
 
+        resultTable.setItems(null);
+        player.setCellValueFactory(new PropertyValueFactory<>("name"));
+        numSteps.setCellValueFactory(new PropertyValueFactory<>("numSteps"));
+        gameStarted.setCellValueFactory(new PropertyValueFactory<>("gameStarted"));
+        gameFinished.setCellValueFactory(new PropertyValueFactory<>("gameFinished"));
+        goalAchieved.setCellValueFactory(new PropertyValueFactory<>("isGoalAchieved"));
+
+
+
+        gameFinished.setCellFactory(column -> {
+            TableCell<Player, LocalDateTime> cell = new TableCell<Player, LocalDateTime>() {
+                private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
+
+                @Override
+                protected void updateItem(LocalDateTime item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        setText(item.format(formatter));
+                    }
+                }
+            };
+
+            return cell;
+        });
+
+        ObservableList<Player> observableResult = FXCollections.observableArrayList();
+        observableResult.addAll(topTenList);
+
+        resultTable.setItems(observableResult);
     }
 
 }

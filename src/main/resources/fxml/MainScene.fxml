@@ -15,7 +15,7 @@
             </font>
         </Label>
         <Label layoutX="159.0" layoutY="191.0" text="Player Name" />
-        <TextField fx:id="player1nameText" layoutX="302.0" layoutY="186.0" prefHeight="26.0" prefWidth="158.0" promptText="Player" />
+        <TextField fx:id="playerNameText" layoutX="302.0" layoutY="186.0" prefHeight="26.0" prefWidth="158.0" promptText="Player" />
 
         <Button fx:id="startButton" layoutX="249.0" layoutY="287.0" mnemonicParsing="false" onAction="#startAction" prefHeight="51.0" prefWidth="105.0" text="Start game" />
         

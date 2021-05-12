@@ -1,10 +1,7 @@
 package boardgame.controller;
 
 import boardgame.BoardGameApplication;
-import boardgame.model.Knight;
-import boardgame.model.Data;
-import boardgame.model.Player;
-import boardgame.model.GameState;
+import boardgame.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,10 +19,16 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
-import java.awt.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.awt.Point;
+import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 public class ChessSceneController {
@@ -43,10 +46,16 @@ public class ChessSceneController {
     private Label tunLabel;
 
     @FXML
-    private Button giveUpBUtton;
+    private Button giveUpButton;
 
     @FXML
-    void GiveUpCLicked(ActionEvent event) {
+    void GiveUpClicked(ActionEvent event) {
+
+        try {
+            persistData();
+        } catch (JAXBException e) {
+            log.error("Error while persistance, {} ", e);
+        }
         showResult();
     }
 
@@ -72,12 +81,42 @@ public class ChessSceneController {
             if (gameState.isGoalAchieved()) {
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "Goal Achieved, Congratulations!", ButtonType.OK);
                 a.showAndWait();
+                gameState.getPlayer().setIsGoalAchieved(true);
+
+                try {
+                    persistData();
+                } catch (JAXBException e) {
+                    e.printStackTrace();
+                }
                 showResult();
+
+
             }
 
         } else {
             log.warn("Goal Achieved in {} steps", gameState.getPlayer().getNumSteps());
         }
+    }
+
+    private void persistData() throws JAXBException {
+        gameState.getPlayer().setGameFinished(LocalDateTime.now());
+        List<Player> playerList = Data.getPlayerList();
+        playerList.add(gameState.getPlayer());
+        Data.setPlayerList(playerList);
+
+        Players players = new Players();
+        players.setPlayers(Data.getPlayerList());
+
+        JAXBContext jaxbContext = JAXBContext.newInstance(Players.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        //Marshal the players list in console
+        jaxbMarshaller.marshal(players, System.out);
+
+        //Marshal the players list in file
+        jaxbMarshaller.marshal(players, new File("result.xml"));
     }
 
     private void showResult() {
@@ -89,7 +128,7 @@ public class ChessSceneController {
             stage.toFront();
             stage.show();
 
-            ((Stage) giveUpBUtton.getScene().getWindow()).close();
+            ((Stage) giveUpButton.getScene().getWindow()).close();
             log.info("Result Scene is Loading");
         } catch (IOException x) {
             log.error("Can't Load Scene, Error is: {}", x);
@@ -105,14 +144,14 @@ public class ChessSceneController {
             });
 
             Arrays.stream(gameState.getPlayer().getWhiteKnights()).forEach(knight -> {
-                knight.setOnMouseClicked(this::knigthOnMouseClicked);
+                knight.setOnMouseClicked(this::knightOnMouseClicked);
             });
 
             tunLabel.setText("White's Turn");
-
-        } else {
+        }
+        else {
             Arrays.stream(gameState.getPlayer().getBlackKnights()).forEach(knight -> {
-                knight.setOnMouseClicked(this::knigthOnMouseClicked);
+                knight.setOnMouseClicked(this::knightOnMouseClicked);
             });
 
             Arrays.stream(gameState.getPlayer().getWhiteKnights()).forEach(knight -> {
@@ -120,11 +159,8 @@ public class ChessSceneController {
             });
 
             tunLabel.setText("Black's Turn");
-
         }
-
     }
-
 
     private ObservableList<Pane> availablePanesToMove = FXCollections.observableArrayList();
 
@@ -159,13 +195,13 @@ public class ChessSceneController {
     void initialize() {
 
         gameState = new GameState(new Player(Data.getPlayer1()));
-
+        GameState.resetRestricted();
 
         Arrays.stream(gameState.getPlayer().getWhiteKnights())
                 .forEach(whiteKnight -> {
                     chessBoardView.add(whiteKnight, whiteKnight.getCol(), whiteKnight.getRow());
                     GameState.AddRestricted(whiteKnight.getCurrentLocation());
-                    whiteKnight.setOnMouseClicked(this::knigthOnMouseClicked);
+                    whiteKnight.setOnMouseClicked(this::knightOnMouseClicked);
                 });
         Arrays.stream(gameState.getPlayer().getBlackKnights())
                 .forEach(blackKnight -> {
@@ -177,8 +213,13 @@ public class ChessSceneController {
         tunLabel.setText(gameState.isWhiteMove() ? "White's Turn" : "Black's Turn");
     }
 
+    /**
+     *
+     * @param e
+     */
+
     @FXML
-    private void knigthOnMouseClicked(MouseEvent e) {
+    private void knightOnMouseClicked(MouseEvent e) {
         int rowIndex = (GridPane.getRowIndex((Node) e.getSource()) == null) ? 0 : GridPane.getRowIndex((Node) e.getSource());
         int colIndex = (GridPane.getColumnIndex((Node) e.getSource()) == null) ? 0 : GridPane.getColumnIndex((Node) e.getSource());
 
@@ -208,7 +249,6 @@ public class ChessSceneController {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "No More Moves Available for this knight, try another one!", ButtonType.OK);
             a.showAndWait();
         }
-
     }
 
 }
