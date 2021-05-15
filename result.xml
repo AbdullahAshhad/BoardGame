@@ -189,4 +189,11 @@
         <gameFinished>2021-05-12 09:46:25</gameFinished>
         <isGoalAchieved>false</isGoalAchieved>
     </player>
+    <player>
+        <name>jhj</name>
+        <numSteps>4</numSteps>
+        <gameStarted>2021-05-12 13:26:23</gameStarted>
+        <gameFinished>2021-05-12 13:26:39</gameFinished>
+        <isGoalAchieved>true</isGoalAchieved>
+    </player>
 </players>

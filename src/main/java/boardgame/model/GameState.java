@@ -51,6 +51,7 @@ public class GameState {
 
         int i = 0;
         for (var blackKnight : this.player.getBlackKnights()) {
+
             blackKnight.setRow(3);
             blackKnight.setCol(i++);
         }
@@ -61,19 +62,19 @@ public class GameState {
         }
     }
 
-//    /**
-//     * <p>
-//     * Total Number of Rows in Chess Board.</p>
-//     */
-//    @Getter
-//    public static final int TOTAL_ROWS = 8;
-//
-//    /**
-//     * <p>
-//     * Total Number of Cols in Chess Board.</p>
-//     */
-//    @Getter
-//    public static final int TOTAL_COLS = 8;
+    /**
+     * <p>
+     * Total Number of Rows in Chess Board.</p>
+     */
+    @Getter
+    public static final int TOTAL_ROWS = 4;
+
+    /**
+     * <p>
+     * Total Number of Cols in Chess Board.</p>
+     */
+    @Getter
+    public static final int TOTAL_COLS = 3;
 
     @Setter(AccessLevel.NONE)
     @Getter

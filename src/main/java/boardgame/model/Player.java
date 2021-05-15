@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
  * <p>
  * Class representing Player.
  * <p>
+ * <p>it implements the methods of serializable and comparable.</p>
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -50,7 +51,7 @@ public class Player implements Serializable, Comparable {
     private BlackKnight[] blackKnights;
 
     /**
-     *
+     * <p>this method counts the number of steps.</p>
      */
     public void incrementStep() {
         this.numSteps++;
@@ -62,6 +63,7 @@ public class Player implements Serializable, Comparable {
      *
      * <p>
      * It will make new instance of {@link Player} object.</p>
+     *
      *
      * @param name player name
      */

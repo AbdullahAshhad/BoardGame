@@ -6,36 +6,40 @@
     <artifactId>baord-game</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <description></description>
+    <developers>
+        <developer>
+            <name>Abdullah Ashhad</name>
+            <email>2015n5995@gmail.com</email>
+            <organization>Faculty of Informatics, University of Debrecen</organization>
+            <organizationUrl>https://inf.unideb.hu/</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <developerConnection>scm:git:https://github.com/AbdullahAshhad/BoardGame.git</developerConnection>
+    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <maven.compiler.release>16</maven.compiler.release>
         <exec.mainClass>boardgame.Main</exec.mainClass>
         <javafx.version>16</javafx.version>
+        <junit.jupiter.version>5.7.1</junit.jupiter.version>
+        <jacoco.version>0.8.7</jacoco.version>
+        <surefire.version>3.0.0-M5</surefire.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.26</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.11.2</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>${javafx.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -50,64 +54,53 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.26</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.11.2</version>
-            <scope>runtime</scope>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
-            <artifactId>checkstyle</artifactId>
-            <version>[8.29,)</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.11.2</version>
-            <scope>runtime</scope>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <filters>
-            <filter>db.properties</filter>
-        </filters>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>${mainClass}</mainClass>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>15</source>
-                    <target>15</target>
+                    <source>16</source>
+                    <target>16</target>
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.18.20.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -131,13 +124,25 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.0.0</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.1</version>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
@@ -147,49 +152,60 @@
                     <mainClass>${exec.mainClass}</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.42</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
     <reporting>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
                 <reportSets>
                     <reportSet>
                         <reports>
-                            <!-- select non-aggregate reports -->
-                            <report>report</report>
+                            <report>javadoc</report>
                         </reports>
                     </reportSet>
                 </reportSets>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M4</version>
-            </plugin>
-            <plugin>
-                <groupId>com.atlassian.maven.plugins</groupId>
-                <artifactId>maven-clover2-plugin</artifactId>
-                <configuration>
-                    <generateHtml>true</generateHtml>
-                    <generatePdf>true</generatePdf>
-                    <generateXml>true</generateXml>
-                </configuration>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.1.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.1.2</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${surefire.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
-                            <report>checkstyle</report>
+                            <report>report</report>
                         </reports>
                     </reportSet>
                 </reportSets>

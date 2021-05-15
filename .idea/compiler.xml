@@ -11,7 +11,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="board-game" target="15" />
+      <module name=".mvn" target="1.5" />
+      <module name="board-game" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

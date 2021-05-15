@@ -237,8 +237,9 @@ public class ChessSceneController {
 
                 if (row_index == move.x && col_index == move.y) {
 
-                    availablePanesToMove.add((Pane) node);
-
+                    try {
+                        availablePanesToMove.add((Pane) node);
+                    }catch(Exception x){}
                     node.setStyle("-fx-background-color: #FFFF00;");
 
                 }
