@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="board-game" />
+        <module name="baord-game" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name=".mvn" target="1.5" />
+      <module name="baord-game" target="15" />
       <module name="board-game" target="15" />
     </bytecodeTargetLevel>
   </component>
