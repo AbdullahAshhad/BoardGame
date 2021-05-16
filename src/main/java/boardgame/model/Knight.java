@@ -5,12 +5,12 @@
  */
 package boardgame.model;
 
-import javafx.scene.control.Label;
-import javafx.scene.text.Font;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
-import java.awt.Point;
 import java.util.*;
 
 import static boardgame.model.GameState.TOTAL_COLS;
@@ -18,21 +18,34 @@ import static boardgame.model.GameState.TOTAL_ROWS;
 
 /**
  * <p>Knight class.</p>
- *
  */
 @Getter
 @Setter
-public class Knight extends Label implements Comparable{
+public class Knight implements Comparable {
 
-    private static final String color = "\u2658";
+    @Setter(AccessLevel.PACKAGE)
+    private String color = "\u2658";
+
+    @Setter(AccessLevel.NONE)
+    private final int font = 80;
+
     private int knightId;
 
     private int row;
 
     private int col;
 
-    private  Point previousLocation;
+    private Pair<Integer, Integer> previousLocation;
 
+
+    /**
+     * <p>Create new Label with given text.</p>
+     *
+     * @param knightId the id of knight according to {@link boardgame.model.GameState} object
+     */
+    public Knight(int knightId) {
+        this.knightId = knightId;
+    }
 
     /**
      * <p>
@@ -40,8 +53,8 @@ public class Knight extends Label implements Comparable{
      *
      * @return the current Position of Player on Chess baord
      */
-    public Point getCurrentLocation() {
-        return new Point(row, col);
+    public Pair<Integer, Integer> getCurrentLocation() {
+        return new ImmutablePair<>(row, col);
     }
 
     /**
@@ -50,11 +63,11 @@ public class Knight extends Label implements Comparable{
      *
      * @return possible moves of player
      */
-    protected ArrayList<Point> getMoves() {
+    protected ArrayList<Pair<Integer, Integer>> getMoves() {
         System.out.println("res");
         GameState.getRestrictedSquares().forEach(System.out::println);
-        Set<Point> possibleMoves = new HashSet<>();
-        List<Point> moves = new ArrayList<>();
+        Set<Pair<Integer, Integer>> possibleMoves = new HashSet<>();
+        List<Pair<Integer, Integer>> moves = new ArrayList<>();
         // All possible moves of a knight
         int X[] = {2, 1, -1, -2, -2, -1, 1, 2};
         int Y[] = {1, 2, 2, 1, -1, -2, -2, -1};
@@ -68,25 +81,12 @@ public class Knight extends Label implements Comparable{
 
             // count valid moves
             if (x >= 0 && y >= 0 && x < TOTAL_ROWS && y < TOTAL_COLS
-                    && !GameState.getRestrictedSquares().contains(new Point(x, y))) {
-                possibleMoves.add(new Point(x, y));
+                    && !GameState.getRestrictedSquares().contains(new ImmutablePair<>(x, y))) {
+                possibleMoves.add(new ImmutablePair<>(x, y));
             }
 
         }
         return new ArrayList<>(possibleMoves);
-    }
-
-
-
-    /**
-     * <p>Create new Label with given text.</p>
-     *
-     * @param knightId the id of knight according to {@link boardgame.model.GameState} object
-     */
-    public Knight(int knightId) {
-        super(color);
-        super.setFont(new Font(80));
-        this.knightId = knightId;
     }
 
     @Override
@@ -112,6 +112,6 @@ public class Knight extends Label implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        return Integer.compare(this.col, ((Knight)o).col);
+        return Integer.compare(this.col, ((Knight) o).col);
     }
 }

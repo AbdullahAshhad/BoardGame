@@ -9,6 +9,6 @@ public class BlackKnight extends Knight{
      */
     public BlackKnight(int knightId) {
         super(knightId);
-        super.setText("\u265E");
+        super.setColor("\u265E");
     }
 }

@@ -10,8 +10,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.tuple.Pair;
 
-import java.awt.*;
+
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -78,9 +79,9 @@ public class GameState {
 
     @Setter(AccessLevel.NONE)
     @Getter
-    private static Set<Point> restrictedSquares = new HashSet<>();
+    private static Set<Pair<Integer, Integer>> restrictedSquares = new HashSet<>();
 
-    public static void AddRestricted(Point p) {
+    public static void AddRestricted(Pair<Integer, Integer> p) {
         restrictedSquares.add(p);
     }
 
@@ -88,7 +89,7 @@ public class GameState {
         restrictedSquares = new HashSet<>();
     }
 
-    public static void RemoveRestricted(Point p) {
+    public static void RemoveRestricted(Pair<Integer, Integer> p) {
         restrictedSquares.remove(p);
     }
 
@@ -112,9 +113,9 @@ public class GameState {
         return isTrue;
     }
 
-    public ArrayList<Point> getKnightMoves(Knight knight) {
+    public ArrayList<Pair<Integer, Integer>> getKnightMoves(Knight knight) {
 
-        ArrayList<Point> knightMoves = knight.getMoves();
+        ArrayList<Pair<Integer, Integer>> knightMoves = knight.getMoves();
 
         if (this.isWhiteMove()) {
             for (BlackKnight blackKnight : this.getPlayer().getBlackKnights()) {

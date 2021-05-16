@@ -18,27 +18,26 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Slf4j
 public class ChessSceneController {
 
-    private Knight[] blackKnights = new Knight[3];
-    private Knight[] whiteKnights = new Knight[3];
-    private Knight clickedKnight;
     GameState gameState = new GameState();
-
-
+    private KnightController[] blackKnights = new KnightController[3];
+    private KnightController[] whiteKnights = new KnightController[3];
+    private KnightController clickedKnight;
     @FXML
     private GridPane chessBoardView;
 
@@ -47,6 +46,7 @@ public class ChessSceneController {
 
     @FXML
     private Button giveUpButton;
+    private ObservableList<Pane> availablePanesToMove = FXCollections.observableArrayList();
 
     @FXML
     void GiveUpClicked(ActionEvent event) {
@@ -66,17 +66,17 @@ public class ChessSceneController {
         int colIndex = (GridPane.getColumnIndex((Node) event.getSource()) == null) ? 0 : GridPane.getColumnIndex((Node) event.getSource());
         if (availablePanesToMove.contains(event.getSource()) && event.getSource() instanceof Pane) {
 
-            GameState.RemoveRestricted(clickedKnight.getCurrentLocation());
+            GameState.RemoveRestricted(clickedKnight.getKnight().getCurrentLocation());
 
             availablePanesToMove.forEach((pane) -> resetColors(rowIndex, colIndex, pane));
             GridPane.setConstraints(clickedKnight, colIndex, rowIndex);
-            clickedKnight.setRow(rowIndex);
-            clickedKnight.setCol(colIndex);
+            clickedKnight.getKnight().setRow(rowIndex);
+            clickedKnight.getKnight().setCol(colIndex);
             availablePanesToMove = FXCollections.observableArrayList();
 
-            Point restrictedPSquare = clickedKnight.getCurrentLocation();
+            Pair<Integer, Integer> restrictedPSquare = clickedKnight.getKnight().getCurrentLocation();
             GameState.AddRestricted(restrictedPSquare);
-            log.info("Added new Pane in Restricted Squares with Row: {} and Col: {}", restrictedPSquare.x, restrictedPSquare.y);
+            log.info("Added new Pane in Restricted Squares with Row: {} and Col: {}", restrictedPSquare.getLeft(), restrictedPSquare.getRight());
             setPaneClickEvent();
             if (gameState.isGoalAchieved()) {
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "Goal Achieved, Congratulations!", ButtonType.OK);
@@ -135,34 +135,28 @@ public class ChessSceneController {
         }
     }
 
-
     private void setPaneClickEvent() {
         gameState.setWhiteMove(!gameState.isWhiteMove());
         if (gameState.isWhiteMove()) {
-            Arrays.stream(gameState.getPlayer().getBlackKnights()).forEach(knight -> {
+            Arrays.stream(blackKnights).forEach(knight -> {
                 knight.setOnMouseClicked(null);
             });
-
-            Arrays.stream(gameState.getPlayer().getWhiteKnights()).forEach(knight -> {
+            Arrays.stream(whiteKnights).forEach(knight -> {
                 knight.setOnMouseClicked(this::knightOnMouseClicked);
             });
 
             tunLabel.setText("White's Turn");
-        }
-        else {
-            Arrays.stream(gameState.getPlayer().getBlackKnights()).forEach(knight -> {
+        } else {
+            Arrays.stream(blackKnights).forEach(knight -> {
                 knight.setOnMouseClicked(this::knightOnMouseClicked);
             });
-
-            Arrays.stream(gameState.getPlayer().getWhiteKnights()).forEach(knight -> {
+            Arrays.stream(whiteKnights).forEach(knight -> {
                 knight.setOnMouseClicked(null);
             });
 
             tunLabel.setText("Black's Turn");
         }
     }
-
-    private ObservableList<Pane> availablePanesToMove = FXCollections.observableArrayList();
 
     /**
      * <p>
@@ -197,16 +191,25 @@ public class ChessSceneController {
         gameState = new GameState(new Player(Data.getPlayer1()));
         GameState.resetRestricted();
 
-        Arrays.stream(gameState.getPlayer().getWhiteKnights())
+        BlackKnight[] tempBlackNight = gameState.getPlayer().getBlackKnights();
+        Knight[] tempWhiteNight = gameState.getPlayer().getWhiteKnights();
+
+        IntStream.range(0, tempBlackNight.length)
+                .forEach(i -> blackKnights[i] = new KnightController(tempBlackNight[i]));
+
+        IntStream.range(0, tempWhiteNight.length)
+                .forEach(i -> whiteKnights[i] = new KnightController(tempWhiteNight[i]));
+
+        Arrays.stream(whiteKnights)
                 .forEach(whiteKnight -> {
-                    chessBoardView.add(whiteKnight, whiteKnight.getCol(), whiteKnight.getRow());
-                    GameState.AddRestricted(whiteKnight.getCurrentLocation());
+                    chessBoardView.add(whiteKnight, whiteKnight.getKnight().getCol(), whiteKnight.getKnight().getRow());
+                    GameState.AddRestricted(whiteKnight.getKnight().getCurrentLocation());
                     whiteKnight.setOnMouseClicked(this::knightOnMouseClicked);
                 });
-        Arrays.stream(gameState.getPlayer().getBlackKnights())
+        Arrays.stream(blackKnights)
                 .forEach(blackKnight -> {
-                    chessBoardView.add(blackKnight, blackKnight.getCol(), blackKnight.getRow());
-                    GameState.AddRestricted(blackKnight.getCurrentLocation());
+                    chessBoardView.add(blackKnight, blackKnight.getKnight().getCol(), blackKnight.getKnight().getRow());
+                    GameState.AddRestricted(blackKnight.getKnight().getCurrentLocation());
                     blackKnight.setOnMouseClicked(null);
                 });
 
@@ -214,7 +217,6 @@ public class ChessSceneController {
     }
 
     /**
-     *
      * @param e
      */
 
@@ -225,21 +227,22 @@ public class ChessSceneController {
 
         availablePanesToMove.forEach((pane) -> resetColors(rowIndex, colIndex, pane));
 
-        clickedKnight = (Knight) e.getSource();
-        ArrayList<Point> clickedKnightMoves = gameState.getKnightMoves(clickedKnight);
+        clickedKnight = (KnightController) e.getSource();
+        ArrayList<Pair<Integer, Integer>> clickedKnightMoves = gameState.getKnightMoves(clickedKnight.getKnight());
 
-        for (Point move : clickedKnightMoves) {
+        for (Pair<Integer, Integer> move : clickedKnightMoves) {
             ObservableList<Node> chessBoardViewChildren = chessBoardView.getChildren();
             for (Node node : chessBoardViewChildren) {
                 int row_index = (GridPane.getRowIndex(node)) == null ? 0 : GridPane.getRowIndex(node);
                 int col_index = (GridPane.getColumnIndex(node)) == null ? 0 : GridPane.getColumnIndex(node);
 
 
-                if (row_index == move.x && col_index == move.y) {
+                if (row_index == move.getLeft() && col_index == move.getRight()) {
 
                     try {
                         availablePanesToMove.add((Pane) node);
-                    }catch(Exception x){}
+                    } catch (Exception x) {
+                    }
                     node.setStyle("-fx-background-color: #FFFF00;");
 
                 }

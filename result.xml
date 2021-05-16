@@ -196,4 +196,18 @@
         <gameFinished>2021-05-12 13:26:39</gameFinished>
         <isGoalAchieved>true</isGoalAchieved>
     </player>
+    <player>
+        <name>jh</name>
+        <numSteps>5</numSteps>
+        <gameStarted>2021-05-16 13:34:32</gameStarted>
+        <gameFinished>2021-05-16 13:34:46</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
+    <player>
+        <name>hassan</name>
+        <numSteps>7</numSteps>
+        <gameStarted>2021-05-16 13:34:51</gameStarted>
+        <gameFinished>2021-05-16 13:35:54</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
 </players>

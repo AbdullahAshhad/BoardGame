@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name=".mvn" target="1.5" />
-      <module name="board-game" target="16" />
+      <module name="board-game" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>
