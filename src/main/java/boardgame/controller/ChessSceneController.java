@@ -1,6 +1,8 @@
 package boardgame.controller;
 
 import boardgame.BoardGameApplication;
+import boardgame.controller.FunctionsLibrary.FunctionsLib;
+import boardgame.controller.customControls.KnightController;
 import boardgame.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -126,6 +128,7 @@ public class ChessSceneController {
             stage.setScene(new Scene(loader.load()));
             stage.setTitle("Result");
             stage.toFront();
+            stage.setOnCloseRequest(FunctionsLib.confirmCloseEventHandler);
             stage.show();
 
             ((Stage) giveUpButton.getScene().getWindow()).close();

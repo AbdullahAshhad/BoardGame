@@ -53,12 +53,12 @@ public class GameState {
         int i = 0;
         for (var blackKnight : this.player.getBlackKnights()) {
 
-            blackKnight.setRow(3);
+            blackKnight.setRow(0);
             blackKnight.setCol(i++);
         }
         i = 0;
         for (var whiteKnight : this.player.getWhiteKnights()) {
-            whiteKnight.setRow(0); //TODO
+            whiteKnight.setRow(3); //TODO
             whiteKnight.setCol(i++);
         }
     }
@@ -94,6 +94,9 @@ public class GameState {
     }
 
 
+    /**
+     * @return
+     */
     public boolean isGoalAchieved() {
         boolean isTrue = true;
         List<BlackKnight> blackKnights = Arrays.stream(getPlayer().getBlackKnights()).collect(Collectors.toList());

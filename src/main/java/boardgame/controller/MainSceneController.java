@@ -1,6 +1,7 @@
 package boardgame.controller;
 
 import boardgame.BoardGameApplication;
+import boardgame.controller.FunctionsLibrary.FunctionsLib;
 import boardgame.model.Data;
 import boardgame.model.Players;
 import javafx.event.ActionEvent;
@@ -43,6 +44,7 @@ public class MainSceneController {
                 Data.setPlayer1(playerNameText.getText());
                 Stage stage = new Stage();
                 stage.setScene(new Scene(loader.load()));
+                stage.setOnCloseRequest(FunctionsLib.confirmCloseEventHandler);
                 stage.setTitle("Main Board Game");
                 stage.toFront();
                 stage.show();

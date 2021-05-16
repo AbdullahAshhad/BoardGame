@@ -1,4 +1,4 @@
-package boardgame.controller;
+package boardgame.controller.customControls;
 
 import boardgame.model.Knight;
 import javafx.scene.control.Label;

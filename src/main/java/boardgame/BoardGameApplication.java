@@ -2,6 +2,7 @@ package boardgame;
 
 import java.io.IOException;
 
+import boardgame.controller.FunctionsLibrary.FunctionsLib;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +25,7 @@ public class BoardGameApplication extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainScene.fxml"));
         stage.setTitle("Board Game");
         Scene scene = new Scene(root);
+        stage.setOnCloseRequest(FunctionsLib.confirmCloseEventHandler);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
