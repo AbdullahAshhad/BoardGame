@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * <p>This class is to make the list of the players.</p>
+ * <p>This class is to make the list of the players to store in JSON format.</p>
  *
  */
 
@@ -30,9 +30,9 @@ public class Players
 
     /**
      *
-     * @param employees
+     * @param players
      */
-    public void setPlayers(List<Player> employees) {
-        this.players = employees;
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 }

@@ -26,6 +26,8 @@ public class FunctionsLib {
      * Event to override default Close Event(javafx).
      * </p>
      *
+     * It will ask user confirmation whenever close button is pressed.
+     *
      */
     public static EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
         Alert alert = new Alert(

@@ -96,6 +96,5 @@ public class Player implements Serializable, Comparable {
             }
         }
         return compar;
-
     }
 }

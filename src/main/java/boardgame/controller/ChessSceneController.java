@@ -33,6 +33,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * This class handle the Game and and.... ....
+ */
 @Slf4j
 public class ChessSceneController {
 
@@ -50,9 +53,11 @@ public class ChessSceneController {
     private Button giveUpButton;
     private ObservableList<Pane> availablePanesToMove = FXCollections.observableArrayList();
 
+    /**
+     * <p>It will persist data into JSON and then show the Result window.</p>
+     */
     @FXML
-    void GiveUpClicked(ActionEvent event) {
-
+    void GiveUpClicked() {
         try {
             persistData();
         } catch (JAXBException e) {
@@ -61,6 +66,14 @@ public class ChessSceneController {
         showResult();
     }
 
+    /**
+     * <p>It will move the knight to the pane clicked if that is in the available panes to move.</p>
+     *
+     * It will check the restricted panes and move knight accordingly and then change the restricted squares.
+     * It will also  check if goal achieved on every move.
+     *
+     * @param event fired by the pane click.
+     */
     @FXML
     void paneMouseClicked(MouseEvent event) {
         gameState.getPlayer().incrementStep();
@@ -100,6 +113,11 @@ public class ChessSceneController {
         }
     }
 
+    /**
+     * <p>This will persists Data in JSON format.</p>
+     *
+     * @throws JAXBException
+     */
     private void persistData() throws JAXBException {
         gameState.getPlayer().setGameFinished(LocalDateTime.now());
         List<Player> playerList = Data.getPlayerList();
@@ -121,6 +139,11 @@ public class ChessSceneController {
         jaxbMarshaller.marshal(players, new File("result.xml"));
     }
 
+    /**
+     * <p>This will show the Result window.</p>
+     *
+     * It will also override the onCloseEvent.
+     */
     private void showResult() {
         try {
             FXMLLoader loader = new FXMLLoader(BoardGameApplication.class.getResource("/fxml/ResultScene.fxml"));
@@ -138,24 +161,21 @@ public class ChessSceneController {
         }
     }
 
+    /**
+     * <p>It will chnage the knight OnMouseClick method on every move.</p>
+     *
+     * It will actually check the knight move according to color and then change the Event accordingly.
+     */
     private void setPaneClickEvent() {
         gameState.setWhiteMove(!gameState.isWhiteMove());
         if (gameState.isWhiteMove()) {
-            Arrays.stream(blackKnights).forEach(knight -> {
-                knight.setOnMouseClicked(null);
-            });
-            Arrays.stream(whiteKnights).forEach(knight -> {
-                knight.setOnMouseClicked(this::knightOnMouseClicked);
-            });
+            Arrays.stream(blackKnights).forEach(knight -> knight.setOnMouseClicked(null));
+            Arrays.stream(whiteKnights).forEach(knight -> knight.setOnMouseClicked(this::knightOnMouseClicked));
 
             tunLabel.setText("White's Turn");
         } else {
-            Arrays.stream(blackKnights).forEach(knight -> {
-                knight.setOnMouseClicked(this::knightOnMouseClicked);
-            });
-            Arrays.stream(whiteKnights).forEach(knight -> {
-                knight.setOnMouseClicked(null);
-            });
+            Arrays.stream(blackKnights).forEach(knight -> knight.setOnMouseClicked(this::knightOnMouseClicked));
+            Arrays.stream(whiteKnights).forEach(knight -> knight.setOnMouseClicked(null));
 
             tunLabel.setText("Black's Turn");
         }
@@ -187,8 +207,12 @@ public class ChessSceneController {
 
     }
 
+    /**
+     * <p>This method is called by the FXMLLoader when initialization is complete.</p>
+     *
+     * It will initialize the game state and put knight on the relevant positions.
+     */
     @FXML
-        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
 
         gameState = new GameState(new Player(Data.getPlayer1()));
@@ -220,6 +244,9 @@ public class ChessSceneController {
     }
 
     /**
+     * <p>It will higjlight the possible moes after click on knight.</p>
+     *mov echeck kre ga avalbale nd us k hisab se highlight kre ga
+     * r reset bhi kre ga colors purane wale.
      * @param e
      */
 
