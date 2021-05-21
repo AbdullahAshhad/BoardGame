@@ -20,9 +20,6 @@ import java.util.stream.Collectors;
 /**
  * <p>
  * Class for Representing the Game State.</p>
- *
- * @author ssht
- * @version $Id: $Id
  */
 @Setter
 @Getter
@@ -81,21 +78,40 @@ public class GameState {
     @Getter
     private static Set<Pair<Integer, Integer>> restrictedSquares = new HashSet<>();
 
+    /**
+     * <p>Add the box to restricted boxes.</p>
+     * @param p is the box number.
+     */
     public static void AddRestricted(Pair<Integer, Integer> p) {
         restrictedSquares.add(p);
     }
 
+    /**
+     * <p>Reset the boxes that are restricted.</p>
+     */
     public static void resetRestricted() {
         restrictedSquares = new HashSet<>();
     }
 
+    /**
+     * <p>Remove the boxes from restricted to open.</p>
+     * @param p is the box number.
+     */
     public static void RemoveRestricted(Pair<Integer, Integer> p) {
         restrictedSquares.remove(p);
     }
 
 
     /**
-     * @return
+     * <p>This method checks if the goal of the game is achieved or not.</p>
+     *
+     * It collects the position of the black knights and check if they are on the desired place,
+     * same thing happens for the white knights as well.
+     *
+     * If the black knights are in bottom row and the white knights are in top row,
+     * then the goal state is achieved.
+     *
+     * @return true if the black knights swap the places with white knights. i.e. white knights go to top row and black knights go to bottom row.
      */
     public boolean isGoalAchieved() {
         boolean isTrue = true;
@@ -111,11 +127,16 @@ public class GameState {
             if (whiteKnights.get(i).getRow() != 0) isTrue = false;
             if (whiteKnights.get(i).getCol() != i) isTrue = false;
         }
-
-
         return isTrue;
     }
 
+    /**
+     * <p>It is to get the moves of the knights.</p>
+     *
+     *
+     * @param knight is the knight for which we are getting the possible moves.
+     * @return it will return the possible moves.
+     */
     public ArrayList<Pair<Integer, Integer>> getKnightMoves(Knight knight) {
 
         ArrayList<Pair<Integer, Integer>> knightMoves = knight.getMoves();

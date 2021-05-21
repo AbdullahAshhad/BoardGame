@@ -15,8 +15,6 @@ import lombok.extern.slf4j.Slf4j;
  * <p>
  * Class providing Some useful functions and events.</p>
  *
- * @author ssht
- * @version $Id: $Id
  */
 @Slf4j
 public class FunctionsLib {

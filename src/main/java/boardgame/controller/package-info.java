@@ -1,4 +1,4 @@
 /**
- * Provides classes of Custom Controls defined.
+ * Provides Controller for FXMLs.
  */
 package boardgame.controller;

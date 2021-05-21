@@ -20,6 +20,12 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * <p>This class loads the main screen of  the game.</p>
+ *
+ * it also handles the exceptions if the scene is not loading or the result page is not available.
+ */
+
 @Slf4j
 public class MainSceneController {
 
@@ -32,6 +38,12 @@ public class MainSceneController {
     @FXML
     private Label errorLabel;
 
+    /**
+     * <p>This method takes the name of the player.</p>
+     * If player name is not provided it shows the error.
+     * It will show the Chess Scene.
+     * @param event
+     */
     @FXML
     void startAction(ActionEvent event) {
         if (playerNameText.getText().trim().isEmpty()) {
@@ -69,6 +81,4 @@ public class MainSceneController {
         }
 
     }
-
-
 }

@@ -17,10 +17,9 @@ import java.time.LocalDateTime;
 
 
 /**
- * <p>
- * Class representing Player.
- * <p>
- * <p>it implements the methods of serializable and comparable.</p>
+ * <p>Class representing Player.</p>
+ *
+ * It implements the methods of serializable and comparable.
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -32,21 +31,42 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Player implements Serializable, Comparable {
 
+    /**
+     * Variable to store name of player.
+     */
     private String name;
 
+    /**
+     * Variable to store number of Steps.
+     */
     private int numSteps;
 
+    /**
+     * This is a variable to store the time when game starts.
+     */
     @XmlJavaTypeAdapter(value = LocalDateTimeAdapter.class)
     private LocalDateTime gameStarted;
 
+    /**
+     * This is a variable to store the time when game ends.
+     */
     @XmlJavaTypeAdapter(value = LocalDateTimeAdapter.class)
     private LocalDateTime gameFinished;
 
+    /**
+     * This is a variable to store the goalAchieved state.
+     */
     private Boolean isGoalAchieved;
 
+    /**
+     * Array to store WhiteKnights.
+     */
     @XmlTransient
     private Knight[] whiteKnights;
 
+    /**
+     * Array to store BlackKnights.
+     */
     @XmlTransient
     private BlackKnight[] blackKnights;
 
@@ -61,8 +81,7 @@ public class Player implements Serializable, Comparable {
      * <p>
      * Constructor of Player.</p>
      *
-     * <p>
-     * It will make new instance of {@link Player} object.</p>
+     * It will make new instance of {@link Player} object.
      *
      *
      * @param name player name
@@ -80,6 +99,16 @@ public class Player implements Serializable, Comparable {
         this.gameStarted = LocalDateTime.now();
     }
 
+    /**
+     * <p>It will compare the two player objects and it will be used for the sorting.</p>
+     *
+     * First it will check if the goal is achieved or not, after that,
+     * it will go for number of steps and time taken to solve the puzzle.
+     *
+     * @param o Object to be compared with this object.
+     *
+     * @return 1, -1 and 0 on the basis of the comparison.
+     */
     @Override
     public int compareTo(Object o) {
         Player other = (Player) o;

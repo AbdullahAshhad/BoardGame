@@ -17,8 +17,9 @@ public class BoardGameApplication extends Application {
 
     /**
      * <p>This method will launch the main scene of the game and set the attributes.</p>
+     *
      * @param stage is the main scene of the game.
-     * @throws IOException
+     * @throws IOException if file MainScene.fxml not found or have some issues.
      */
     @Override
     public void start(Stage stage) throws IOException {

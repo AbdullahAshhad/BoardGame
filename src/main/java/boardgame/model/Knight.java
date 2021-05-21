@@ -39,7 +39,7 @@ public class Knight implements Comparable {
 
 
     /**
-     * <p>Create new Label with given text.</p>
+     * <p>Create new Knight.</p>
      *
      * @param knightId the id of knight according to {@link boardgame.model.GameState} object
      */

@@ -1,5 +1,11 @@
 package boardgame.model;
 
+/**
+ * <p>
+ * This class is used to make the Black knight.
+ * </p>
+ */
+
 public class BlackKnight extends Knight{
     /**
      * <p>

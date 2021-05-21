@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>
- * Class made to store some data temporarily.<p>
+ * <p>Class made to store some data temporarily.</p>
  *
  */
 public class Data {

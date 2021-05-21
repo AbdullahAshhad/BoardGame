@@ -27,9 +27,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * <p>
- * Controller Class for ResultScene.fxml.
- * <p>
+ * <p>Controller Class for ResultScene.fxml.</p>
  *
  */
 @Slf4j
@@ -52,8 +50,6 @@ public class ResultSceneController {
 
     @FXML
     private TableColumn<Player, Boolean> goalAchieved;
-
-
 
     /**
      * <p>

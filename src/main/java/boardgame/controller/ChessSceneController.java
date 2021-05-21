@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * This class handle the Game and and.... ....
+ * This class handle the Game and control the whole Chess.
  */
 @Slf4j
 public class ChessSceneController {
@@ -162,7 +162,7 @@ public class ChessSceneController {
     }
 
     /**
-     * <p>It will chnage the knight OnMouseClick method on every move.</p>
+     * <p>It will change the knight OnMouseClick method on every move.</p>
      *
      * It will actually check the knight move according to color and then change the Event accordingly.
      */
@@ -190,7 +190,7 @@ public class ChessSceneController {
      *
      * @param rowIndex row Index of clicked pane
      * @param colIndex col Index of clicked Pane
-     * @param pane     pane
+     * @param pane     pane whose color to be changed.
      * @throws IOException
      */
     private void resetColors(int rowIndex, int colIndex, Pane pane) {
@@ -244,10 +244,10 @@ public class ChessSceneController {
     }
 
     /**
-     * <p>It will higjlight the possible moes after click on knight.</p>
+     * <p>It will highlight the possible moves after click on knight.</p> //todo
      *mov echeck kre ga avalbale nd us k hisab se highlight kre ga
      * r reset bhi kre ga colors purane wale.
-     * @param e
+     * @param e Mouse Event initiated after clicking on Knight.
      */
 
     @FXML
