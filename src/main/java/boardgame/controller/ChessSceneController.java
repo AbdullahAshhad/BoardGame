@@ -6,7 +6,6 @@ import boardgame.controller.customControls.KnightController;
 import boardgame.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -61,7 +60,7 @@ public class ChessSceneController {
         try {
             persistData();
         } catch (JAXBException e) {
-            log.error("Error while persistance, {} ", e);
+            log.error("Error while persistence, {} ", e);
         }
         showResult();
     }
@@ -116,7 +115,7 @@ public class ChessSceneController {
     /**
      * <p>This will persists Data in JSON format.</p>
      *
-     * @throws JAXBException
+     * @throws JAXBException , it throws the JAXB exception.
      */
     private void persistData() throws JAXBException {
         gameState.getPlayer().setGameFinished(LocalDateTime.now());
@@ -131,12 +130,8 @@ public class ChessSceneController {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-        //Marshal the players list in console
-        jaxbMarshaller.marshal(players, System.out);
-
-        //Marshal the players list in file
         jaxbMarshaller.marshal(players, new File("result.xml"));
+        log.info("Player Data persisted to File.");
     }
 
     /**
@@ -191,7 +186,6 @@ public class ChessSceneController {
      * @param rowIndex row Index of clicked pane
      * @param colIndex col Index of clicked Pane
      * @param pane     pane whose color to be changed.
-     * @throws IOException
      */
     private void resetColors(int rowIndex, int colIndex, Pane pane) {
         if (rowIndex % 2 == 0 && colIndex % 2 == 0) {
@@ -244,9 +238,8 @@ public class ChessSceneController {
     }
 
     /**
-     * <p>It will highlight the possible moves after click on knight.</p> //todo
-     *mov echeck kre ga avalbale nd us k hisab se highlight kre ga
-     * r reset bhi kre ga colors purane wale.
+     * <p>It will highlight the possible moves after click on knight.</p>
+     * It will check the available moves and highlight them, and it will also reset the color.
      * @param e Mouse Event initiated after clicking on Knight.
      */
 

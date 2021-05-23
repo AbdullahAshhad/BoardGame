@@ -231,4 +231,18 @@
         <gameFinished>2021-05-17 20:44:51</gameFinished>
         <isGoalAchieved>false</isGoalAchieved>
     </player>
+    <player>
+        <name>hasj</name>
+        <numSteps>12</numSteps>
+        <gameStarted>2021-05-23 14:33:26</gameStarted>
+        <gameFinished>2021-05-23 14:34:16</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
+    <player>
+        <name>affg</name>
+        <numSteps>7</numSteps>
+        <gameStarted>2021-05-23 20:33:28</gameStarted>
+        <gameFinished>2021-05-23 20:34:47</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
 </players>

@@ -85,7 +85,6 @@ public class ResultSceneController {
         List<Player> players = Data.getPlayerList();
         Collections.sort(players);
         List<Player> topTenList =  players.stream().skip(0).limit(10).collect(Collectors.toList());
-        players.stream().map(Player::getNumSteps).forEach(System.out::println);
 
         resultTable.setItems(null);
         player.setCellValueFactory(new PropertyValueFactory<>("name"));
