@@ -64,7 +64,7 @@ public class Knight implements Comparable {
      * @return possible moves of player
      */
     protected ArrayList<Pair<Integer, Integer>> getMoves() {
-        System.out.println("res");
+
         GameState.getRestrictedSquares().forEach(System.out::println);
         Set<Pair<Integer, Integer>> possibleMoves = new HashSet<>();
         List<Pair<Integer, Integer>> moves = new ArrayList<>();

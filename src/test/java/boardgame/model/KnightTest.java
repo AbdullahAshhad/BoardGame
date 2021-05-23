@@ -2,6 +2,7 @@ package boardgame.model;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,8 +14,8 @@ public class KnightTest {
     private static GameState gs;
 
 
-    @BeforeAll
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         Player player = new Player("testPlayer");
         gs = new GameState(player);
     }

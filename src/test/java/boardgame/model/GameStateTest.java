@@ -3,6 +3,7 @@ package boardgame.model;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -17,8 +18,8 @@ public class GameStateTest {
     private static GameState gs;
 
 
-    @BeforeAll
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         Player player = new Player("testPlayer");
         gs = new GameState(player);
     }
@@ -26,7 +27,7 @@ public class GameStateTest {
     @Test
     public void testInitialKnightPositions() {
 
-        Pair<Integer, Integer>[] blackKnighttLocation = Arrays.stream(gs.getPlayer().getBlackKnights())
+        Pair<Integer, Integer>[] blackKnightLocation = Arrays.stream(gs.getPlayer().getBlackKnights())
                 .map(Knight::getCurrentLocation)
                 .toArray(Pair[]::new);
 
@@ -46,7 +47,7 @@ public class GameStateTest {
                 new ImmutablePair<>(3, 2)
         };
 
-        assertArrayEquals(blackKnightExpectedLocation, blackKnighttLocation);
+        assertArrayEquals(blackKnightExpectedLocation, blackKnightLocation);
         assertArrayEquals(whiteKnightExpectedLocation, whiteKnightLocation);
     }
 
@@ -59,11 +60,12 @@ public class GameStateTest {
         Arrays.stream(gs.getPlayer().getBlackKnights()).forEach(blackKnight -> {
             blackKnight.setRow(3);
         });
+
         assertTrue(gs.isGoalAchieved());
     }
 
     @Test
-    public void testKnightMovesMehtod() {
+    public void testKnightMovesMethod() {
         List<BlackKnight> blackKnights = Arrays.stream(gs.getPlayer().getBlackKnights())
                 .collect(Collectors.toList());
         List<Knight> whiteKnights = Arrays.stream(gs.getPlayer().getWhiteKnights())

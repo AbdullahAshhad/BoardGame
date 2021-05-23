@@ -6,7 +6,16 @@
     <artifactId>baord-game</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <description></description>
+    <description>A game board consisting of 4 rows and 3 columns.
+        The game is played with 3 black knight and 3 white knight chess pieces.
+        Initially, the 3 black knights are placed in the top row,
+        while the 3 white knights are placed in the bottom row.
+        The goal of the game is to swap the pieces on the board, i.e.,
+        to get the white knights in the top row, and to get the black knights in the bottom row, respectively.
+        The pieces move according to the rules of the chess.
+        A piece is not allowed to be moved to a square that is under attack by any piece of the opposite color.
+        Black pieces and white pieces move in turn (white moves first).
+        When a new game is started the program ask for the name of the player.</description>
     <developers>
         <developer>
             <name>Abdullah Ashhad</name>
