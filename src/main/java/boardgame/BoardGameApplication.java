@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 /**
  * <p>The Class responsible for starting GUI operations.</p>
- *
  */
 public class BoardGameApplication extends Application {
 

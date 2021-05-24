@@ -10,7 +10,6 @@ import lombok.Data;
  *
  *
  * Knights get their appearance on board from here.
- *
  */
 
 @Data
@@ -19,6 +18,7 @@ public class KnightController extends Label {
 
     /**
      * this method is used for the images of knights on board.
+     *
      * @param knight is the knight that appear on board.
      */
     public KnightController(Knight knight) {

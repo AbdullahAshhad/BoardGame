@@ -103,7 +103,6 @@
                 <configuration>
                     <source>15</source>
                     <target>15</target>
-<!--                    <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
                 </configuration>
             </plugin>
             <plugin>

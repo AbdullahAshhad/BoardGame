@@ -4,7 +4,6 @@ import boardgame.BoardGameApplication;
 import boardgame.controller.FunctionsLibrary.FunctionsLib;
 import boardgame.model.Data;
 import boardgame.model.Players;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -42,15 +41,14 @@ public class MainSceneController {
      * <p>This method takes the name of the player.</p>
      * If player name is not provided it shows the error.
      * It will show the Chess Scene.
-     * @param event
+     *
      */
     @FXML
-    void startAction(ActionEvent event) {
+    void startAction() {
         if (playerNameText.getText().trim().isEmpty()) {
             errorLabel.setText("* Player Name is required!!");
             log.error("Player Name is not Provided");
-        }
-        else {
+        } else {
             try {
                 FXMLLoader loader = new FXMLLoader(BoardGameApplication.class.getResource("/fxml/ChessScene.fxml"));
                 Data.setPlayer1(playerNameText.getText());
@@ -67,15 +65,14 @@ public class MainSceneController {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Players.class);
                 Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-                Players player = (Players) jaxbUnmarshaller.unmarshal( new File("result.xml") );
+                Players player = (Players) jaxbUnmarshaller.unmarshal(new File("result.xml"));
 
                 Data.setPlayerList(player.getPlayers());
 
-            } catch (IOException  x) {
-                log.error("Can't Load Scene, Error is: {}", x);
-            }
-            catch (JAXBException x){
-                log.error("Can't Read Data from persistence, Error is {}",x);
+            } catch (IOException x) {
+                log.error("Can't Load Scene, Error is: {0}", x);
+            } catch (JAXBException x) {
+                log.error("Can't Read Data from persistence, Error is {0}", x);
             }
             log.info("Player 1 Name is set to {}, loading game scene.", playerNameText.getText());
         }

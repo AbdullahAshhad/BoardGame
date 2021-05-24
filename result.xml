@@ -245,4 +245,32 @@
         <gameFinished>2021-05-23 20:34:47</gameFinished>
         <isGoalAchieved>false</isGoalAchieved>
     </player>
+    <player>
+        <name>qqq</name>
+        <numSteps>8</numSteps>
+        <gameStarted>2021-05-23 21:39:07</gameStarted>
+        <gameFinished>2021-05-23 21:39:27</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
+    <player>
+        <name>Abdullah12</name>
+        <numSteps>11</numSteps>
+        <gameStarted>2021-05-24 17:46:08</gameStarted>
+        <gameFinished>2021-05-24 17:47:25</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
+    <player>
+        <name>Ali ahmed</name>
+        <numSteps>21</numSteps>
+        <gameStarted>2021-05-24 17:57:06</gameStarted>
+        <gameFinished>2021-05-24 18:00:17</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
+    <player>
+        <name>zzzzzz</name>
+        <numSteps>0</numSteps>
+        <gameStarted>2021-05-24 18:15:23</gameStarted>
+        <gameFinished>2021-05-24 18:15:26</gameFinished>
+        <isGoalAchieved>false</isGoalAchieved>
+    </player>
 </players>

@@ -56,7 +56,7 @@ public class ChessSceneController {
      * <p>It will persist data into JSON and then show the Result window.</p>
      */
     @FXML
-    void GiveUpClicked() {
+    void giveUpClicked() {
         try {
             persistData();
         } catch (JAXBException e) {
@@ -67,7 +67,7 @@ public class ChessSceneController {
 
     /**
      * <p>It will move the knight to the pane clicked if that is in the available panes to move.</p>
-     *
+     * <p>
      * It will check the restricted panes and move knight accordingly and then change the restricted squares.
      * It will also  check if goal achieved on every move.
      *
@@ -136,7 +136,7 @@ public class ChessSceneController {
 
     /**
      * <p>This will show the Result window.</p>
-     *
+     * <p>
      * It will also override the onCloseEvent.
      */
     private void showResult() {
@@ -158,7 +158,7 @@ public class ChessSceneController {
 
     /**
      * <p>It will change the knight OnMouseClick method on every move.</p>
-     *
+     * <p>
      * It will actually check the knight move according to color and then change the Event accordingly.
      */
     private void setPaneClickEvent() {
@@ -183,8 +183,8 @@ public class ChessSceneController {
      * <p>
      * It will be called for every pane exists.</p>
      *
-     * @param rowIndex row Index of clicked pane
-     * @param colIndex col Index of clicked Pane
+     * @param rowIndex row Index of clicked pane.
+     * @param colIndex col Index of clicked Pane.
      * @param pane     pane whose color to be changed.
      */
     private void resetColors(int rowIndex, int colIndex, Pane pane) {
@@ -203,7 +203,7 @@ public class ChessSceneController {
 
     /**
      * <p>This method is called by the FXMLLoader when initialization is complete.</p>
-     *
+     * <p>
      * It will initialize the game state and put knight on the relevant positions.
      */
     @FXML
@@ -240,6 +240,7 @@ public class ChessSceneController {
     /**
      * <p>It will highlight the possible moves after click on knight.</p>
      * It will check the available moves and highlight them, and it will also reset the color.
+     *
      * @param e Mouse Event initiated after clicking on Knight.
      */
 

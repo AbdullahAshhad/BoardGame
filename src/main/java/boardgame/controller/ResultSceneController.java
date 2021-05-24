@@ -2,7 +2,6 @@ package boardgame.controller;
 
 import boardgame.model.Data;
 import boardgame.model.GameState;
-
 import boardgame.model.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +26,6 @@ import java.util.stream.Collectors;
 
 /**
  * <p>Controller Class for ResultScene.fxml.</p>
- *
  */
 @Slf4j
 public class ResultSceneController {
@@ -55,8 +52,8 @@ public class ResultSceneController {
      * <p>
      * It will call the main Scene Again and close this one.</p>
      *
-     * @param actionEvent
-     * @throws IOException
+     * @param actionEvent event passed when back button pressed.
+     * @throws IOException thrown if file not found.
      */
     @FXML
     private void back(ActionEvent actionEvent) throws IOException {
@@ -84,7 +81,7 @@ public class ResultSceneController {
     public void initialize() {
         List<Player> players = Data.getPlayerList();
         Collections.sort(players);
-        List<Player> topTenList =  players.stream().skip(0).limit(10).collect(Collectors.toList());
+        List<Player> topTenList = players.stream().skip(0).limit(10).collect(Collectors.toList());
 
         resultTable.setItems(null);
         player.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -94,9 +91,8 @@ public class ResultSceneController {
         goalAchieved.setCellValueFactory(new PropertyValueFactory<>("isGoalAchieved"));
 
 
-
         gameFinished.setCellFactory(column -> {
-            TableCell<Player, LocalDateTime> cell = new TableCell<Player, LocalDateTime>() {
+            TableCell<Player, LocalDateTime> cell = new TableCell<>() {
                 private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
 
                 @Override

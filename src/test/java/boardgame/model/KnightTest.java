@@ -21,11 +21,9 @@ public class KnightTest {
 
     @Test
     public void testKnightActualMoves() {
-        List<ImmutablePair<Integer, Integer>> blackKnightActualMoves = Arrays.asList(new ImmutablePair[]{
-                        new ImmutablePair<>(2, 1),
-                        new ImmutablePair<>(1, 2)
-                }
-        );
+        List<ImmutablePair<Integer, Integer>> blackKnightActualMoves = Arrays.asList(
+                new ImmutablePair<>(2, 1),
+                new ImmutablePair<>(1, 2));
 
         assertEquals(gs.getPlayer().getBlackKnights()[0].getMoves(), blackKnightActualMoves);
 

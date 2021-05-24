@@ -2,12 +2,10 @@ package boardgame.model;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,12 +52,8 @@ public class GameStateTest {
     @Test
     public void testGameStateIsGoalAchievedMethod() {
 
-        Arrays.stream(gs.getPlayer().getWhiteKnights()).forEach(whiteKnight -> {
-            whiteKnight.setRow(0);
-        });
-        Arrays.stream(gs.getPlayer().getBlackKnights()).forEach(blackKnight -> {
-            blackKnight.setRow(3);
-        });
+        Arrays.stream(gs.getPlayer().getWhiteKnights()).forEach(whiteKnight -> whiteKnight.setRow(0));
+        Arrays.stream(gs.getPlayer().getBlackKnights()).forEach(blackKnight -> blackKnight.setRow(3));
 
         assertTrue(gs.isGoalAchieved());
     }
