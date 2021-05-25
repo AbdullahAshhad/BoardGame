@@ -15,7 +15,6 @@ public class GameStateTest {
 
     private static GameState gs;
 
-
     @BeforeEach
     public void setup() {
         Player player = new Player("testPlayer");

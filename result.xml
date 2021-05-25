@@ -8,269 +8,31 @@
         <isGoalAchieved>false</isGoalAchieved>
     </player>
     <player>
-        <name>hassan</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:14:14</gameStarted>
-        <gameFinished>2021-05-11 11:14:22</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hassan</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:14:14</gameStarted>
-        <gameFinished>2021-05-11 11:14:22</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hjh</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:20:50</gameStarted>
-        <gameFinished>2021-05-11 11:20:58</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hsa</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:23:11</gameStarted>
-        <gameFinished>2021-05-11 11:23:23</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hassan</name>
-        <numSteps>2</numSteps>
-        <gameStarted>2021-05-11 11:18:02</gameStarted>
-        <gameFinished>2021-05-11 11:18:08</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hassan</name>
-        <numSteps>2</numSteps>
-        <gameStarted>2021-05-11 11:18:02</gameStarted>
-        <gameFinished>2021-05-11 11:18:08</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>abdul</name>
+        <name>abdullah</name>
         <numSteps>4</numSteps>
-        <gameStarted>2021-05-10 22:10:22</gameStarted>
-        <gameFinished>2021-05-10 22:10:29</gameFinished>
-        <isGoalAchieved>true</isGoalAchieved>
-    </player>
-    <player>
-        <name>hsa</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:23:11</gameStarted>
-        <gameFinished>2021-05-11 11:23:23</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>gjhj</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:24:01</gameStarted>
-        <gameFinished>2021-05-11 11:24:05</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>fgy</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:25:13</gameStarted>
-        <gameFinished>2021-05-11 11:25:17</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>h</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:26:26</gameStarted>
-        <gameFinished>2021-05-11 11:26:30</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hasn</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-11 11:29:10</gameStarted>
-        <gameFinished>2021-05-11 11:29:16</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>abu</name>
-        <numSteps>0</numSteps>
-        <gameStarted>2021-05-11 11:30:04</gameStarted>
-        <gameFinished>2021-05-11 11:30:05</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>has</name>
-        <numSteps>9</numSteps>
-        <gameStarted>2021-05-11 11:31:02</gameStarted>
-        <gameFinished>2021-05-11 11:31:57</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>h</name>
-        <numSteps>0</numSteps>
-        <gameStarted>2021-05-11 11:33:36</gameStarted>
-        <gameFinished>2021-05-11 11:33:40</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>ha</name>
-        <numSteps>0</numSteps>
-        <gameStarted>2021-05-11 11:36:40</gameStarted>
-        <gameFinished>2021-05-11 11:36:42</gameFinished>
+        <gameStarted>2021-05-25 16:59:00</gameStarted>
+        <gameFinished>2021-05-25 16:59:11</gameFinished>
         <isGoalAchieved>false</isGoalAchieved>
     </player>
     <player>
         <name>has</name>
         <numSteps>0</numSteps>
-        <gameStarted>2021-05-11 11:37:09</gameStarted>
-        <gameFinished>2021-05-11 11:37:11</gameFinished>
+        <gameStarted>2021-05-25 17:22:55</gameStarted>
+        <gameFinished>2021-05-25 17:22:58</gameFinished>
         <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>jhj</name>
-        <numSteps>2</numSteps>
-        <gameStarted>2021-05-11 17:55:12</gameStarted>
-        <gameFinished>2021-05-11 17:55:25</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>asdddd</name>
-        <numSteps>4</numSteps>
-        <gameStarted>2021-05-11 17:57:01</gameStarted>
-        <gameFinished>2021-05-11 17:57:08</gameFinished>
-        <isGoalAchieved>true</isGoalAchieved>
-    </player>
-    <player>
-        <name>sdffd</name>
-        <numSteps>4</numSteps>
-        <gameStarted>2021-05-11 17:57:27</gameStarted>
-        <gameFinished>2021-05-11 17:57:39</gameFinished>
-        <isGoalAchieved>true</isGoalAchieved>
-    </player>
-    <player>
-        <name>asdsad</name>
-        <numSteps>5</numSteps>
-        <gameStarted>2021-05-11 18:10:29</gameStarted>
-        <gameFinished>2021-05-11 18:10:53</gameFinished>
-        <isGoalAchieved>true</isGoalAchieved>
-    </player>
-    <player>
-        <name>Hassan</name>
-        <numSteps>21</numSteps>
-        <gameStarted>2021-05-12 09:33:13</gameStarted>
-        <gameFinished>2021-05-12 09:35:36</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hhhhhhhhh</name>
-        <numSteps>0</numSteps>
-        <gameStarted>2021-05-12 09:35:52</gameStarted>
-        <gameFinished>2021-05-12 09:38:27</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>dsffsdfsd</name>
-        <numSteps>3</numSteps>
-        <gameStarted>2021-05-12 09:45:52</gameStarted>
-        <gameFinished>2021-05-12 09:45:58</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>weqwww</name>
-        <numSteps>5</numSteps>
-        <gameStarted>2021-05-12 09:46:07</gameStarted>
-        <gameFinished>2021-05-12 09:46:16</gameFinished>
-        <isGoalAchieved>true</isGoalAchieved>
     </player>
     <player>
         <name>kkkk</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-12 09:46:22</gameStarted>
-        <gameFinished>2021-05-12 09:46:25</gameFinished>
+        <numSteps>16</numSteps>
+        <gameStarted>2021-05-25 17:24:27</gameStarted>
+        <gameFinished>2021-05-25 17:24:59</gameFinished>
         <isGoalAchieved>false</isGoalAchieved>
     </player>
     <player>
-        <name>jhj</name>
-        <numSteps>4</numSteps>
-        <gameStarted>2021-05-12 13:26:23</gameStarted>
-        <gameFinished>2021-05-12 13:26:39</gameFinished>
-        <isGoalAchieved>true</isGoalAchieved>
-    </player>
-    <player>
-        <name>jh</name>
-        <numSteps>5</numSteps>
-        <gameStarted>2021-05-16 13:34:32</gameStarted>
-        <gameFinished>2021-05-16 13:34:46</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hassan</name>
-        <numSteps>7</numSteps>
-        <gameStarted>2021-05-16 13:34:51</gameStarted>
-        <gameFinished>2021-05-16 13:35:54</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>jg,hbjhk</name>
-        <numSteps>5</numSteps>
-        <gameStarted>2021-05-16 15:07:10</gameStarted>
-        <gameFinished>2021-05-16 15:07:29</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>jh</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-16 15:07:33</gameStarted>
-        <gameFinished>2021-05-16 15:07:52</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hassan</name>
-        <numSteps>1</numSteps>
-        <gameStarted>2021-05-17 20:28:07</gameStarted>
-        <gameFinished>2021-05-17 20:44:51</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>hasj</name>
-        <numSteps>12</numSteps>
-        <gameStarted>2021-05-23 14:33:26</gameStarted>
-        <gameFinished>2021-05-23 14:34:16</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>affg</name>
-        <numSteps>7</numSteps>
-        <gameStarted>2021-05-23 20:33:28</gameStarted>
-        <gameFinished>2021-05-23 20:34:47</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>qqq</name>
-        <numSteps>8</numSteps>
-        <gameStarted>2021-05-23 21:39:07</gameStarted>
-        <gameFinished>2021-05-23 21:39:27</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>Abdullah12</name>
-        <numSteps>11</numSteps>
-        <gameStarted>2021-05-24 17:46:08</gameStarted>
-        <gameFinished>2021-05-24 17:47:25</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>Ali ahmed</name>
-        <numSteps>21</numSteps>
-        <gameStarted>2021-05-24 17:57:06</gameStarted>
-        <gameFinished>2021-05-24 18:00:17</gameFinished>
-        <isGoalAchieved>false</isGoalAchieved>
-    </player>
-    <player>
-        <name>zzzzzz</name>
+        <name>hj</name>
         <numSteps>0</numSteps>
-        <gameStarted>2021-05-24 18:15:23</gameStarted>
-        <gameFinished>2021-05-24 18:15:26</gameFinished>
+        <gameStarted>2021-05-25 19:36:14</gameStarted>
+        <gameFinished>2021-05-25 19:36:15</gameFinished>
         <isGoalAchieved>false</isGoalAchieved>
     </player>
 </players>

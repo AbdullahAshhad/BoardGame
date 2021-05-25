@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>Class representing Player.</p>
- *
+ * <p>
  * It implements the methods of serializable and comparable.
  */
 @XmlRootElement
@@ -29,7 +29,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Player implements Serializable, Comparable {
+public class Player implements Comparable {
 
     /**
      * Variable to store name of player.
@@ -80,9 +80,8 @@ public class Player implements Serializable, Comparable {
     /**
      * <p>
      * Constructor of Player.</p>
-     *
+     * <p>
      * It will make new instance of {@link Player} object.
-     *
      *
      * @param name player name
      */
@@ -101,12 +100,11 @@ public class Player implements Serializable, Comparable {
 
     /**
      * <p>It will compare the two player objects and it will be used for the sorting.</p>
-     *
+     * <p>
      * First it will check if the goal is achieved or not, after that,
      * it will go for number of steps and time taken to solve the puzzle.
      *
      * @param o Object to be compared with this object.
-     *
      * @return 1, -1 and 0 on the basis of the comparison.
      */
     @Override
@@ -114,11 +112,10 @@ public class Player implements Serializable, Comparable {
         Player other = (Player) o;
         int compar = -1 * Boolean.compare(this.isGoalAchieved, other.isGoalAchieved);
 
-        if(compar==0){
+        if (compar == 0) {
             if (this.numSteps > other.numSteps) return 1;
             else if (this.numSteps < other.numSteps) return -1;
             else {
-
                 long secondsElapsedThisPlayer = Duration.between(this.gameStarted, this.gameFinished).toSeconds();
                 long secondsElapsedOtherPlayer = Duration.between(other.gameStarted, other.gameFinished).toSeconds();
                 return Long.compare(secondsElapsedThisPlayer, secondsElapsedOtherPlayer);

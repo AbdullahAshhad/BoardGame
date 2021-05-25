@@ -8,7 +8,6 @@ import lombok.Data;
 /**
  * <p>This class is to show Knight in GUI.</p>
  *
- *
  * Knights get their appearance on board from here.
  */
 

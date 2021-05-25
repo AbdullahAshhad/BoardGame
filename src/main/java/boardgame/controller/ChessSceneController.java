@@ -96,7 +96,7 @@ public class ChessSceneController {
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "Goal Achieved, Congratulations!", ButtonType.OK);
                 a.showAndWait();
                 gameState.getPlayer().setIsGoalAchieved(true);
-
+                log.warn("Goal Achieved in {} steps", gameState.getPlayer().getNumSteps());
                 try {
                     persistData();
                 } catch (JAXBException e) {
@@ -108,7 +108,7 @@ public class ChessSceneController {
             }
 
         } else {
-            log.warn("Goal Achieved in {} steps", gameState.getPlayer().getNumSteps());
+            log.warn("You have clicked in Wrong Pane, please click on highlighted ones");
         }
     }
 
@@ -208,7 +208,6 @@ public class ChessSceneController {
      */
     @FXML
     void initialize() {
-
         gameState = new GameState(new Player(Data.getPlayer1()));
         GameState.resetRestricted();
 
@@ -268,7 +267,6 @@ public class ChessSceneController {
                     } catch (Exception x) {
                     }
                     node.setStyle("-fx-background-color: #FFFF00;");
-
                 }
             }
         }

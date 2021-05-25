@@ -32,8 +32,26 @@ public class GameState {
     @Getter
     private static final int numWhiteKnights = 3;
 
-    private Player player;
 
+    /**
+     * <p>
+     * Total Number of Rows in Chess Board.</p>
+     */
+    @Getter
+    public static final int TOTAL_ROWS = 4;
+
+    /**
+     * <p>
+     * Total Number of Cols in Chess Board.</p>
+     */
+    @Getter
+    public static final int TOTAL_COLS = 3;
+
+    @Setter(AccessLevel.NONE)
+    @Getter
+    private static Set<Pair<Integer, Integer>> restrictedSquares = new HashSet<>();
+
+    private Player player;
 
     private boolean isWhiteMove;
 
@@ -55,28 +73,11 @@ public class GameState {
         }
         i = 0;
         for (var whiteKnight : this.player.getWhiteKnights()) {
-            whiteKnight.setRow(3); //TODO
+            whiteKnight.setRow(3);
             whiteKnight.setCol(i++);
         }
     }
 
-    /**
-     * <p>
-     * Total Number of Rows in Chess Board.</p>
-     */
-    @Getter
-    public static final int TOTAL_ROWS = 4;
-
-    /**
-     * <p>
-     * Total Number of Cols in Chess Board.</p>
-     */
-    @Getter
-    public static final int TOTAL_COLS = 3;
-
-    @Setter(AccessLevel.NONE)
-    @Getter
-    private static Set<Pair<Integer, Integer>> restrictedSquares = new HashSet<>();
 
     /**
      * <p>Add the box to restricted boxes.</p>
@@ -160,5 +161,4 @@ public class GameState {
         }
         return knightMoves;
     }
-
 }

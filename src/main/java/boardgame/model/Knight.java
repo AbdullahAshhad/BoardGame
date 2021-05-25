@@ -35,7 +35,7 @@ public class Knight implements Comparable {
 
     private int col;
 
-    private Pair<Integer, Integer> previousLocation;
+//    private Pair<Integer, Integer> previousLocation;
 
 
     /**
@@ -66,7 +66,6 @@ public class Knight implements Comparable {
     protected ArrayList<Pair<Integer, Integer>> getMoves() {
 
         Set<Pair<Integer, Integer>> possibleMoves = new HashSet<>();
-        List<Pair<Integer, Integer>> moves = new ArrayList<>();
         // All possible moves of a knight
         int X[] = {2, 1, -1, -2, -2, -1, 1, 2};
         int Y[] = {1, 2, 2, 1, -1, -2, -2, -1};
@@ -83,7 +82,6 @@ public class Knight implements Comparable {
                     && !GameState.getRestrictedSquares().contains(new ImmutablePair<>(x, y))) {
                 possibleMoves.add(new ImmutablePair<>(x, y));
             }
-
         }
         return new ArrayList<>(possibleMoves);
     }

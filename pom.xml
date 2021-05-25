@@ -14,8 +14,7 @@
         to get the white knights in the top row, and to get the black knights in the bottom row, respectively.
         The pieces move according to the rules of the chess.
         A piece is not allowed to be moved to a square that is under attack by any piece of the opposite color.
-        Black pieces and white pieces move in turn (white moves first).
-        When a new game is started the program ask for the name of the player.</description>
+        Black pieces and white pieces move in turn (white moves first).</description>
     <developers>
         <developer>
             <name>Abdullah Ashhad</name>

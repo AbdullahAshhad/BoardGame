@@ -1,5 +1,8 @@
 package boardgame.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,26 +17,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "players")
 @XmlAccessorType (XmlAccessType.FIELD)
-
+@Setter
+@Getter
 public class Players
 {
     @XmlElement(name = "player")
     private List<Player> players = null;
-
-    /**
-     * <p>it is method that will return the list of players.</p>
-     *
-     * @return it returns the list of players.
-     */
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    /**
-     *<p>Setter method for players list.</p>
-     * @param players list of players for XML storage.
-     */
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
 }

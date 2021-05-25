@@ -36,7 +36,6 @@ public class FunctionsLib {
         if (!ButtonType.YES.equals(alert.showAndWait().get())) {
             event.consume();
         }
-        
     };
 
 }

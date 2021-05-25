@@ -109,6 +109,24 @@ public class ResultSceneController {
             return cell;
         });
 
+        gameStarted.setCellFactory(column -> {
+            TableCell<Player, LocalDateTime> cell = new TableCell<>() {
+                private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
+
+                @Override
+                protected void updateItem(LocalDateTime item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        setText(item.format(formatter));
+                    }
+                }
+            };
+
+            return cell;
+        });
+
         ObservableList<Player> observableResult = FXCollections.observableArrayList();
         observableResult.addAll(topTenList);
 
